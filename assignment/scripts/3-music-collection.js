@@ -4,27 +4,43 @@ console.log('***** Music Collection *****')
 const myCollection = [];
 
 function addToCollection(collection, title, artist, yearPublished) {
-  this.collection = collection;
-  this.title = title;
-  this.artist = artist;
-  this.yearPublished = yearPublished;
-  let record = {
-    collection: this.collection,
-    title: this.title,
-    artist: this.artist,
-    yearPublished: this.yearPublished
+  const record = {
+    collection: collection,
+    title: title,
+    artist: artist,
+    yearPublished: yearPublished,
   };
   myCollection.push(record);
-  return myCollection[myCollection.length-1];
+  return record;
+};
 
-  
-}
-console.log(addToCollection('rap', 'because the internet', 'childish gambino', 2013));
-addToCollection('rap', 'At.Long.Last.ASAP', 'A$AP Rocky', 2015);
+console.log(addToCollection(myCollection, 'Because the Internet', 'Childish Gambino', 2013));
+console.log(addToCollection(myCollection, 'AT.LONG.LAST.ASAP', 'Childish Gambino', 2015));
+console.log(addToCollection(myCollection, 'Is a Real Boy', 'Say Anything', 2005));
+console.log(addToCollection(myCollection, 'EGGY POCKET', 'Bilmuri', 2020));
+console.log(addToCollection(myCollection,"you'll be fine", 'Hot Mulligan', 2020));
+console.log(addToCollection(myCollection, 'Welcome Home', 'Aries', 2019));
 console.log(myCollection);
-addToCollection()
 
+function showCollection(collection) {
+  for (let index in collection) {
+    console.log(collection[index]['title'], ' by ', collection[index]['artist'], ' published in ', collection[index]['yearPublished'])
+  };
+};
 
+console.log(showCollection(myCollection));
+
+function findByArtist(collection, artist) {
+  let foundArtist = [];
+  for (let art in collection) {
+    if (collection[art]['artist'] === artist) {
+      foundArtist.push(collection);
+    } 
+
+  } return foundArtist;
+}
+console.log(findByArtist(myCollection, 'Childish Gambino'));
+console.log(findByArtist(myCollection, 'Prince'));
 
 
 
